@@ -32,22 +32,22 @@ a) With Area of Motion and Image Timestamp:
 ##### Sample Response:
 
     {
-        'marketing_message': 'SIGN UP AT Smartsentry.ai/register TO RECEIVE YOUR  CAMERA(S) DAILY SMART REPORT.', 
-        'person_results': {
-            'bounding_box': [[41, 2, 1360, 908]], 
-            'occupied_state': 'Alert'
+        'Marketing_Message': 'SIGN UP AT Smartsentry.ai/register TO RECEIVE YOUR  CAMERA(S) DAILY SMART REPORT.', 
+        'Person_Results': {
+            'Bounding_Box': [[41, 2, 1360, 908]], 
+            'Occupied_State': 'Alert'
         }, 
-        'face_results': {
-            'face_bounding_boxes': [[67, 520, 506, 889]], 
-            'labels': ['Person 14'], 
-            'categories': ['Safe']
+        'Face_Results': {
+            'Face_Bounding_Boxes': [[67, 520, 506, 889]], 
+            'Labels': ['Person 14'], 
+            'Categories': ['Safe']
         }, 
-        'vehicle_results': {
-            'vehicle_bounding_boxes': [[12,243,123,454]],
-            'vehicle_occupied_state': 'Alert'
+        'Vehicle_Results': {
+            'Vehicle_Bounding_Boxes': [[12,243,123,454]],
+            'Vehicle_Occupied_State': 'Alert'
         }, 
-        'pet_results': {
-            'pet_bounding_boxes': [[12,243,123,454]],
-            'pet_occupied_state': 'Occupied’
+        'Pet_Results': {
+            'Pet_Bounding_Boxes': [[12,243,123,454]],
+            'Pet_Occupied_State': 'Occupied’
         }
     }
