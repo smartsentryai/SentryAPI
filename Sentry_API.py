@@ -49,50 +49,48 @@ class SentryAPI:
 		people_bounding_box = output['bounding_box']
 		people_occupied_state = output['occupied_state']
 
+		vehicle_bounding_boxes = []
+		vehicle_occupied_state = ''
+		pet_bounding_boxes = []
+		pet_occupied_state = ''
+
 		if 'vehicle_results' in output:
 			vehicle_results = output['vehicle_results']
-			if not vehicle_results:
-				vehicle_bounding_boxes = []
-				vehicle_occupied_state = ''
-			else:
+			if vehicle_results:
 				vehicle_bounding_boxes = vehicle_results['vehicle_bounding_boxes']
 				vehicle_occupied_state = vehicle_results['vehicle_occupied_state']
 		
 		if 'pet_results' in output:
 			pet_results = output['pet_results']
-			if not pet_results:
-				pet_bounding_boxes = []
-				pet_occupied_state = ''
-			else:
+			if pet_results:
 				pet_bounding_boxes = pet_results['pet_bounding_boxes']
 				pet_occupied_state = pet_results['pet_occupied_state']
 
+		print("Person Detection Results")
 
-			print("Person Detection Results")
+		if people_occupied_state == 'Alert':
+			print("Person Bounding Boxes -> ", people_bounding_box)
+			print('Send Alert')
+		elif people_occupied_state == 'Occupied':
+			print('Human found but already Alerted ')
+		else:
+			print('Vacant')
+		print('----------------')
 
-			if people_occupied_state == 'Alert':
-				print("Person Bounding Boxes -> ", people_bounding_box)
-				print('Send Alert')
-			elif people_occupied_state == 'Occupied':
-				print('Human found but already Alerted ')
-			else:
-				print('Vacant')
-			print('----------------')
+		print("Face Results")
+		print("Face Bounding Boxes -> ",face_bounding_boxes)
+		print("Face labels -> ",face_labels)
+		print("Categories -> ", category)
+		print('----------------')
 
-			print("Face Results")
-			print("Face Bounding Boxes -> ",face_bounding_boxes)
-			print("Face labels -> ",face_labels)
-			print("Categories -> ", category)
-			print('----------------')
+		print("Vehicle Results")
+		print("Vehicle Bounding Boxes -> ", vehicle_bounding_boxes)
+		print("Vehicle Occupied State -> ", vehicle_occupied_state)
+		print('-------------')
 
-			print("Vehicle Results")
-			print("Vehicle Bounding Boxes -> ", vehicle_bounding_boxes)
-			print("Vehicle Occupied State -> ", vehicle_occupied_state)
-			print('-------------')
-
-			print("Pet Results")
-			print("Pet Bounding Boxes -> ", pet_bounding_boxes)
-			print("Pet Occupied State", pet_occupied_state)
+		print("Pet Results")
+		print("Pet Bounding Boxes -> ", pet_bounding_boxes)
+		print("Pet Occupied State", pet_occupied_state)
 
 
 
