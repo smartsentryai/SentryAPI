@@ -46,6 +46,9 @@ class SentryAPI:
 		face_labels = face_results['labels']
 		category = face_results['categories']
 
+		people_bounding_box = output['bounding_box']
+		people_occupied_state = output['occupied_state']
+
 		if 'vehicle_results' in output:
 			vehicle_results = output['vehicle_results']
 			if not vehicle_results:
@@ -66,8 +69,14 @@ class SentryAPI:
 
 
 			print("Person Detection Results")
-			print("Person Bounding Boxes -> ", output['bounding_box'])
-			print('Occupied State -> ', output['occupied_state'])
+
+			if people_occupied_state == 'Alert':
+				print("Person Bounding Boxes -> ", people_bounding_box)
+				print('Send Alert')
+			elif people_occupied_state == 'Occupied':
+				print('Human found but already Alerted ')
+			else:
+				print('Vacant')
 			print('----------------')
 
 			print("Face Results")
@@ -87,10 +96,12 @@ class SentryAPI:
 
 
 
-if __name__ == '__main__':
-	site_id = '5FBUD6-B'
-	camera_name = 'Cam1'
 
+if __name__ == '__main__':
+
+	# Get it from Sentry
+	site_id = ''
+	camera_name = 'Cam1'
 	API_KEY = ""
 	URL = ""
 
