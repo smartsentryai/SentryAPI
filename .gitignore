@@ -1,0 +1,11 @@
+__pycache__/
+.idea/
+.cache/
+Tests/.cache/
+Tests/.pytest_cache/
+*.ipynb
+.ipynb_checkpoints
+*.log
+.idea/vcs.xml
+.idea/markdown-navigator.xml
+.idea/inspectionProfiles/Project_Default.xml
