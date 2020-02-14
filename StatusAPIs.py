@@ -20,7 +20,7 @@ class StatusAPIs:
         response = requests.request("GET", self.url, headers=self.headers, timeout=25)
         return response
 
-    def update_payload_with_more_info(self, camera_id, camera_response):
+    def update_payload(self, camera_id, camera_response):
         cam_info = {camera_id: camera_response}
         self.payload.update({"camera_information": cam_info})
 
@@ -32,7 +32,7 @@ class StatusAPIs:
         output = response.text
         print("The result after DB update is = ", output)
 
-    def parse_output(self, response):
+    def parse_get_output(self, response):
         output = json.loads(response.text)
         marketing_message = output["marketing_message"]
         marketing_url = output["marketing_url"]
@@ -76,12 +76,12 @@ if __name__ == '__main__':
     api_object = StatusAPIs(sentry_id, camera, API_KEY, URL)
 
     result = api_object.get_results_for_status_api()
-    api_object.parse_output(result)
+    api_object.parse_get_output(result)
 
     # post response
     res = {"person": True, "face": True}
     camera_id = sentry_id+"_"+camera
-    api_object.update_payload_with_more_info(camera_id, res)
+    api_object.update_payload(camera_id, res)
     post_result = api_object.post_response_for_status_api()
     api_object.parse_output_post(post_result)
 
