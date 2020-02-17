@@ -29,8 +29,12 @@ class StatusAPIs:
         return response
 
     def parse_output_post(self, response):
-        output = response.text
-        print("The result after DB update is = ", output)
+        output = json.loads(response.text)
+        status_code = output["statusCode"]
+        if status_code is 200:
+            print("Updated Successfully")
+        elif status_code is 400:
+            print("Update failed. Retry update.")
 
     def parse_get_output(self, response):
         output = json.loads(response.text)
@@ -75,10 +79,23 @@ if __name__ == '__main__':
 
     api_object = StatusAPIs(sentry_id, camera, API_KEY, URL)
 
+    '''
+    The Status() Request call is to keep camera settings synchronized between our 
+    Application integrations and the Sentry cloud.  
+    To that end, the common usage for Status() calls are:
+        - At application startup.  It's always good to make sure the internal configuration 
+            is consistent with Sentry AI settings.  
+        - Calling Status() at startup also results in synchronization whenever the application 
+            is reinstalled after a hardware crash or installed on another machine.
+    '''
     result = api_object.get_results_for_status_api()
     api_object.parse_get_output(result)
 
-    # post response
+    '''
+    The Status() Post call is to turn settings on/off.  Similar to before, 
+    if the user activates the person detection and/or face id checkbox, when closing the dialog, 
+    send the status post call in order to activate or deactivate a feature. 
+    '''
     res = {"person": True, "face": True}
     camera_id = sentry_id+"_"+camera
     api_object.update_payload(camera_id, res)
