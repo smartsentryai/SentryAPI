@@ -41,6 +41,7 @@ class SentryAPI:
 
 	def parse_output(self, response):
 		output = json.loads(response.text)
+		marketing_message = output["marketing_message"]
 		face_results = output['face_results']
 		face_bounding_boxes = face_results['face_bounding_boxes']
 		face_labels = face_results['labels']
@@ -66,6 +67,8 @@ class SentryAPI:
 				pet_bounding_boxes = pet_results['pet_bounding_boxes']
 				pet_occupied_state = pet_results['pet_occupied_state']
 
+		print("Marketing Message = ", marketing_message)
+		
 		print("Person Detection Results")
 
 		if people_occupied_state == 'Alert':
