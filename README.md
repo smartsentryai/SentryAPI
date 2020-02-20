@@ -56,44 +56,44 @@ With Area of Motion and Image and Event Timestamps:
 ##### Status APIs:
 ******************
 GET - The Status() Request call is to keep camera settings synchronized between our Application integrations and the Sentry cloud. To that end, the common usage for Status() calls are:
-        - At application startup.  It's always good to make sure the internal configuration is consistent with Sentry AI settings.
-        - Calling Status() at startup also results in synchronization whenever the application is reinstalled after a hardware crash or installed on another machine.
+  * At application startup.  It's always good to make sure the internal configuration is consistent with Sentry AI settings.
+  * Calling Status() at startup also results in synchronization whenever the application is reinstalled after a hardware crash or installed on another machine.
 
 query parameters sentry_id and camera
 https://api.smartsentry.ai/v2/status?sentry_id=5FBUD6-B&camera=Cam1
 
-Sample Response - 
+##### Sample Response - 
 
-{
-    "trial_license": "active",
-    "paid_license": false,
-    "marketing_message": "Thanks for using Sentry alerts!",
-    "marketing_url": "https://www.smarthomesentry.com/sentry-smart-alert?sentry_id=5FBUD6-B",
-    "marketing_url_name": "Learn more about Sentry AI.",
-    "camera_information": {
-        "5FBUD6-B_Cam1": {
-            "person": true,
-            "face": true
+    {
+        "trial_license": "active",
+        "paid_license": false,
+        "marketing_message": "Thanks for using Sentry alerts!",
+        "marketing_url": "https://www.smarthomesentry.com/sentry-smart-alert?sentry_id=5FBUD6-B",
+        "marketing_url_name": "Learn more about Sentry AI.",
+        "camera_information": {
+            "5FBUD6-B_Cam1": {
+                "person": true,
+                "face": true
+            }
         }
     }
-}
 *******************
 POST - The Status() Post call is to turn settings on/off.  Similar to before, if the user activates the person detection and/or face id checkbox, 
 when closing the dialog, send the status post call in order to activate or deactivate a feature. 
 
-Sample Request -
+##### Sample Request -
 
-{
-    "sentry_id": "5FBUD6-B",
-    "camera_information": {
-        "5FBUD6-B_Cam1": {"person" : 1, "face": 1}
+    {
+        "sentry_id": "5FBUD6-B",
+        "camera_information": {
+            "5FBUD6-B_Cam1": {"person" : 1, "face": 1}
+        }
     }
-}
 
-Sample Response -
+##### Sample Response -
 
-{
-    "statusCode": 200,
-    "message": "Updated Successfully"
-}
+    {
+        "statusCode": 200,
+        "message": "Updated Successfully"
+    }
 
