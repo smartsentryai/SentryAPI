@@ -9,10 +9,10 @@
 * The intent is to send alerts on "Alert", and not send alerts and show the reason as Occupied when the state field returns "Occupied".
 
 ***
-##### Sample Response 
+##### Sample POST Request:
 
 
-a) With Area of Motion and Image Timestamp:
+With Area of Motion and Image and Event Timestamps:
 
     {
         'body': {
