@@ -44,6 +44,7 @@ class StatusAPIs:
         print("Marketing Message = ", marketing_message)
         print("Marketing URL to subscribe to sentry = ", marketing_url)
         print("Marketing URL Name = ", marketing_url_name )
+
         trial_license = output['trial_license']
         paid_license = output["paid_license"]
         if paid_license is True:
@@ -68,6 +69,15 @@ class StatusAPIs:
                 print("Face ID is on")
             else:
                 print("Face ID is off")
+
+        # Times to send images in milliseconds since motion event trigger
+        first_image_time = output["first_image_time"]
+        second_image_time = output["second_image_time"]
+        third_image_time = output["third_image_time"]
+
+        print("First image delay after motion trigger = ", first_image_time)
+        print("Second image delay = ", second_image_time)
+        print("Third image delay = ", third_image_time)
 
 
 if __name__ == '__main__':
