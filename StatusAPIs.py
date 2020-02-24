@@ -70,15 +70,6 @@ class StatusAPIs:
             else:
                 print("Face ID is off")
 
-        # Times to send images in milliseconds since motion event trigger
-        first_image_time = output["first_image_time"]
-        second_image_time = output["second_image_time"]
-        third_image_time = output["third_image_time"]
-
-        print("First image delay after motion trigger = ", first_image_time)
-        print("Second image delay = ", second_image_time)
-        print("Third image delay = ", third_image_time)
-
 
 if __name__ == '__main__':
     # Get it from Sentry

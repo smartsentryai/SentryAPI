@@ -76,12 +76,7 @@ https://api.smartsentry.ai/v2/status?sentry_id=5FBUD6-B&camera=Cam1
                 "person": true,
                 "face": true
             }
-        },
-        
-        "first_image_time": 1000,
-        "second_image_time": 1000,
-        "third_image_time": 1000
-
+        }
     }
     
 *******************
