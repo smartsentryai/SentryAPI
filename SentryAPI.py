@@ -47,8 +47,9 @@ class SentryAPI:
 		face_labels = face_results['labels']
 		category = face_results['categories']
 
-		people_bounding_box = output['bounding_box']
-		people_occupied_state = output['occupied_state']
+		person_results = output['person_results']
+		people_bounding_box = person_results['bounding_box']
+		people_occupied_state = person_results['occupied_state']
 
 		vehicle_bounding_boxes = []
 		vehicle_occupied_state = ''
