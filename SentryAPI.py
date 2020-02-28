@@ -58,12 +58,14 @@ class SentryAPI:
 		if 'vehicle_results' in output:
 			vehicle_results = output['vehicle_results']
 			if vehicle_results:
+				print("Vehicle Info with bounding boxes and alert state")
 				vehicle_bounding_boxes = vehicle_results['vehicle_bounding_boxes']
 				vehicle_occupied_state = vehicle_results['vehicle_occupied_state']
 		
 		if 'pet_results' in output:
 			pet_results = output['pet_results']
 			if pet_results:
+				print("Pet Info with bounding boxes and alert state")
 				pet_bounding_boxes = pet_results['pet_bounding_boxes']
 				pet_occupied_state = pet_results['pet_occupied_state']
 
@@ -95,7 +97,7 @@ class SentryAPI:
 		print("Pet Bounding Boxes -> ", pet_bounding_boxes)
 		print("Pet Occupied State", pet_occupied_state)
 
-
+# pod-custom-metrics-stackdriver-adapter
 
 
 if __name__ == '__main__':
@@ -104,7 +106,7 @@ if __name__ == '__main__':
 	site_id = ''
 	camera_name = 'Cam1'
 	API_KEY = ""
-	URL = ""
+	URL = "https://api.smartsentry.ai/v2/image"
 
 	test_image = "Image/sentry_example.jpg"
 
