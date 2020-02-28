@@ -97,8 +97,6 @@ class SentryAPI:
 		print("Pet Bounding Boxes -> ", pet_bounding_boxes)
 		print("Pet Occupied State", pet_occupied_state)
 
-# pod-custom-metrics-stackdriver-adapter
-
 
 if __name__ == '__main__':
 
