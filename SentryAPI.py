@@ -47,8 +47,9 @@ class SentryAPI:
 		face_labels = face_results['labels']
 		category = face_results['categories']
 
-		people_bounding_box = output['bounding_box']
-		people_occupied_state = output['occupied_state']
+		person_results = output['person_results']
+		people_bounding_box = person_results['bounding_box']
+		people_occupied_state = person_results['occupied_state']
 
 		vehicle_bounding_boxes = []
 		vehicle_occupied_state = ''
@@ -58,12 +59,14 @@ class SentryAPI:
 		if 'vehicle_results' in output:
 			vehicle_results = output['vehicle_results']
 			if vehicle_results:
+				print("Vehicle Info with bounding boxes and alert state")
 				vehicle_bounding_boxes = vehicle_results['vehicle_bounding_boxes']
 				vehicle_occupied_state = vehicle_results['vehicle_occupied_state']
 		
 		if 'pet_results' in output:
 			pet_results = output['pet_results']
 			if pet_results:
+				print("Pet Info with bounding boxes and alert state")
 				pet_bounding_boxes = pet_results['pet_bounding_boxes']
 				pet_occupied_state = pet_results['pet_occupied_state']
 
@@ -96,15 +99,13 @@ class SentryAPI:
 		print("Pet Occupied State", pet_occupied_state)
 
 
-
-
 if __name__ == '__main__':
 
 	# Get it from Sentry
 	site_id = ''
 	camera_name = 'Cam1'
 	API_KEY = ""
-	URL = ""
+	URL = "https://api.smartsentry.ai/v2/image"
 
 	test_image = "Image/sentry_example.jpg"
 
