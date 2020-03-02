@@ -44,6 +44,7 @@ class StatusAPIs:
         print("Marketing Message = ", marketing_message)
         print("Marketing URL to subscribe to sentry = ", marketing_url)
         print("Marketing URL Name = ", marketing_url_name )
+
         trial_license = output['trial_license']
         paid_license = output["paid_license"]
         if paid_license is True:
