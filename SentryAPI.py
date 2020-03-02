@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
 	# Unix epoch timestamp
 	image_timestamp = int(time.time()*1000)
-	motion_event_timestamp = image_timestamp - 1
+	motion_event_timestamp = image_timestamp - 1000
 	# OPTIONAL
 	api_object.update_payload_with_more_info(area_of_motion, image_timestamp, motion_event_timestamp)
 

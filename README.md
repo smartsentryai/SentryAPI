@@ -19,8 +19,8 @@ With Area of Motion and Image and Event Timestamps:
             'Site_Id': '5FBUD6-B', 
             'Camera_Name': 'Cam1', 
             'Area_Of_Motion': [[44,34,56,21]],
-            'Image_Timestamp': 1234567890, # Timestamp in milliseconds.
-            'Motion_Event_Timestamp': 1234567890-1, #Future Plan
+            'Image_Timestamp': 11582390157999, # Linux epoch time in milliseconds.
+            'Motion_Event_Timestamp': 11582390156999,
             'Image_Bytes': "/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAZABkAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RUQlmCgdycV89fFmTTZ/E5ew2Z8sCZkHBcZ/pisSbxXqs0ex7+4ZT2MhrDubhpmJckknqTXCp1Jtcysd………………………………………."
         }
     }
@@ -51,3 +51,52 @@ With Area of Motion and Image and Event Timestamps:
             'pet_occupied_state': 'Occupied’
         }
     }
+    
+    
+##### Status APIs:
+******************
+
+GET - The Status() Request call is to keep camera settings synchronized between our Application integrations and the Sentry cloud. To that end, the common usage for Status() calls are:
+  * At application startup.  It's always good to make sure the internal configuration is consistent with Sentry AI settings.
+  * Calling Status() at startup also results in synchronization whenever the application is reinstalled after a hardware crash or installed on another machine.
+
+##### query parameters sentry_id, camera
+https://api.smartsentry.ai/v2/status?sentry_id=5FBUD6-B&camera=Cam1
+
+##### Sample Response - 
+
+    {
+        "trial_license": "active",
+        "paid_license": false,
+        "marketing_message": "Thanks for using Sentry alerts!",
+        "marketing_url": "https://www.smarthomesentry.com/sentry-smart-alert?sentry_id=5FBUD6-B",
+        "marketing_url_name": "Learn more about Sentry AI.",
+        "camera_information": {
+            "5FBUD6-B_Cam1": {
+                "person": true,
+                "face": true
+            }
+        }
+    }
+    
+*******************
+
+POST - The Status() Post call is to turn settings on/off.  Similar to before, if the user activates the person detection and/or face id checkbox, 
+when closing the dialog, send the status post call in order to activate or deactivate a feature. 
+
+##### Sample Request -
+
+    {
+        "sentry_id": "5FBUD6-B",
+        "camera_information": {
+            "5FBUD6-B_Cam1": {"person" : 1, "face": 1}
+        }
+    }
+
+##### Sample Response -
+
+    {
+        "statusCode": 200,
+        "message": "Updated Successfully"
+    }
+
