@@ -36,19 +36,10 @@ With Area of Motion and Image and Event Timestamps:
         'person_results': {
             'bounding_box': [[41, 2, 1360, 908]], 
             'occupied_state': 'Alert'
-        }, 
-        'face_results': {
-            'face_bounding_boxes': [[67, 520, 506, 889]], 
-            'labels': ['Person 14'], 
-            'categories': ['Safe']
-        }, 
+        }
         'vehicle_results': {
             'vehicle_bounding_boxes': [[12,243,123,454]],
             'vehicle_occupied_state': 'Alert'
-        }, 
-        'pet_results': {
-            'pet_bounding_boxes': [[12,243,123,454]],
-            'pet_occupied_state': 'Occupied’
         }
     }
     
