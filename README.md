@@ -8,6 +8,7 @@
 * Person bounding boxes are sent whenever a person is found, even if the state is Occupied. (This was not the case in the previous version.) "Alert" is sent when a person or people appear when the state was Vacant. 
 * The intent is to send alerts on "Alert", and not send alerts and show the reason as Occupied when the state field returns "Occupied".
 * The support for new feature, i.e, Vehicle Detection is added with two Boolean variables, which can be changed independently using /registration API request
+* Added the Version Information
 
 ***
 #### Sample Registration Request:
@@ -20,7 +21,8 @@ If it exists, it will update the feature options and send the result back accord
             'partner_identifier': <Same as before>, 
             'company_name': <Same as before>
             'Site_Id' : <Sentry ID/Site ID, if it already exists. If not, not needed to send this attribute>
-            'person' : true  # Can be true or false
+            'Version': 'V2', # For new calls.
+            'person' : true,  # Can be true or false
             'vehicle' : true # Can be true or false
         }
     }
@@ -47,6 +49,7 @@ With Area of Motion and Image and Event Timestamps:
             'Area_Of_Motion': [[44,34,56,21]],
             'Image_Timestamp': 11582390157999, # Linux epoch time in milliseconds.
             'Motion_Event_Timestamp': 11582390156999,
+            'Version': 'V2',
             'Image_Bytes': "/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAZABkAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RUQlmCgdycV89fFmTTZ/E5ew2Z8sCZkHBcZ/pisSbxXqs0ex7+4ZT2MhrDubhpmJckknqTXCp1Jtcysd………………………………………."
         }
     }
