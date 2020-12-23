@@ -28,10 +28,11 @@ If it exists, it will update the feature options and send the result back accord
 ***
 #### Sample Registration Response:
 Will keep the response format same as before, to keep it compatible with old Blue Iris.
-Code: 200
-{
-    Sentry_Id: ‘ABCDEFGH-P’  
-}
+
+    Code: 200
+    {
+        Sentry_Id: ‘ABCDEFGH-P’  
+    }
 
 ***
 ##### Sample POST Request:
