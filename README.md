@@ -9,6 +9,30 @@
 * The intent is to send alerts on "Alert", and not send alerts and show the reason as Occupied when the state field returns "Occupied".
 
 ***
+#### Sample Registration Request:
+The Registration request will be extended to include the Person and Vehicle detection features. 
+This API will create a new Sentry ID (Site ID) if the attribute is not present. This for handling the new customer onboarding. 
+If it exists, it will update the feature options and send the result back accordingly.
+
+    {
+        'body': {
+            'partner_identifier': <Same as before>, 
+            'company_name': <Same as before>
+            'Site_Id' : <Sentry ID/Site ID, if it already exists. If not, not needed to send this attribute>
+            'person' : true  # Can be true or false
+            'vehicle' : true # Can be true or false
+        }
+    }
+
+***
+#### Sample Registration Response:
+Will keep the response format same as before, to keep it compatible with old Blue Iris.
+Code: 200
+{
+    Sentry_Id: ‘ABCDEFGH-P’  
+}
+
+***
 ##### Sample POST Request:
 
 
@@ -30,13 +54,14 @@ With Area of Motion and Image and Event Timestamps:
 ***
 
 ##### Sample Response:
+The **vehicle_results** will be included in the response if/when applicable. This is to make sure that we have backward compatibility.
 
     {
         'marketing_message': 'SIGN UP AT Smartsentry.ai/register TO RECEIVE YOUR  CAMERA(S) DAILY SMART REPORT.', 
         'person_results': {
             'bounding_box': [[41, 2, 1360, 908]], 
             'occupied_state': 'Alert'
-        }
+        }      
         'vehicle_results': {
             'vehicle_bounding_boxes': [[12,243,123,454]],
             'vehicle_occupied_state': 'Alert'
@@ -65,29 +90,12 @@ https://api.smartsentry.ai/v2/status?sentry_id=5FBUD6-B&camera=Cam1
         "camera_information": {
             "5FBUD6-B_Cam1": {
                 "person": true,
-                "face": true
+                "vehicle": true
             }
         }
     }
     
 *******************
 
-POST - The Status() Post call is to turn settings on/off.  Similar to before, if the user activates the person detection and/or face id checkbox, 
-when closing the dialog, send the status post call in order to activate or deactivate a feature. 
 
-##### Sample Request -
-
-    {
-        "sentry_id": "5FBUD6-B",
-        "camera_information": {
-            "5FBUD6-B_Cam1": {"person" : 1, "face": 1}
-        }
-    }
-
-##### Sample Response -
-
-    {
-        "statusCode": 200,
-        "message": "Updated Successfully"
-    }
 
