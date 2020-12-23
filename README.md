@@ -7,6 +7,7 @@
 * Occupied state has changed. Three states are sent in the field; Alert, Occupied and Vacant. 
 * Person bounding boxes are sent whenever a person is found, even if the state is Occupied. (This was not the case in the previous version.) "Alert" is sent when a person or people appear when the state was Vacant. 
 * The intent is to send alerts on "Alert", and not send alerts and show the reason as Occupied when the state field returns "Occupied".
+* The support for new feature, i.e, Vehicle Detection is added with two Boolean variables, which can be changed independently using /registration API request
 
 ***
 #### Sample Registration Request:
