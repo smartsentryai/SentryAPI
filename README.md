@@ -22,8 +22,8 @@ If it exists, it will update the feature options and send the result back accord
             'company_name': <Same as before>
             'Site_Id' : <Sentry ID/Site ID, if it already exists. If not, not needed to send this attribute>
             'Version': 'V2', # For new calls.
-            'person' : true,  # Can be true or false
-            'vehicle' : true # Can be true or false
+            'person' : 'true',  # Can be true or false
+            'vehicle' : 'true' # Can be true or false
         }
     }
 
