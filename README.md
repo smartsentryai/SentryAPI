@@ -88,7 +88,7 @@ https://api.smartsentry.ai/v2/status?sentry_id=5FBUD6-B&camera=Cam1
         "trial_license": "active",
         "paid_license": false,
         "marketing_message": "Thanks for using Sentry alerts!",
-        "marketing_url": "https://www.smarthomesentry.com/sentry-smart-alert?sentry_id=5FBUD6-B",
+        "marketing_url": "https://www.smartsentry.ai/sentry-smart-alert?sentry_id=5FBUD6-B",
         "marketing_url_name": "Learn more about Sentry AI.",
         "camera_information": {
             "5FBUD6-B_Cam1": {
